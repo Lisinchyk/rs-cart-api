@@ -16,14 +16,16 @@ export class CartController {
 
   // @UseGuards(JwtAuthGuard)
   // @UseGuards(BasicAuthGuard)
-  @Get()
-  findUserCart(@Req() req: AppRequest) {
-    const cart = this.cartService.findOrCreateByUserId(getUserIdFromRequest(req));
+  @Get("/:userId")
+  async findUserCart(@Req() req: AppRequest) {
+    // const cart = this.cartService.findOrCreateByUserId(getUserIdFromRequest(req));
+    const cart = await this.cartService.getUserCarts(req.params.userId);
 
     return {
       statusCode: HttpStatus.OK,
       message: 'OK',
-      data: { cart, total: calculateCartTotal(cart) },
+      data: { cart }
+      // data: { cart, total: calculateCartTotal(cart) },
     }
   }
 
