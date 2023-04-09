@@ -3,6 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { v4 } from 'uuid';
 
 import { User } from '../models';
+import { createConnectionClient } from "../../dataBase/createClient";
+import { GET_USER_QUERY } from "../../dataBase/queries";
 
 @Injectable()
 export class UsersService {
@@ -10,6 +12,18 @@ export class UsersService {
 
   constructor() {
     this.users = {}
+  }
+
+  async getAll() {
+    try {
+      const dbClient = await createConnectionClient();
+      return await dbClient.query(GET_USER_QUERY);
+    } catch (error) {
+      console.log(`error on UsersService - getAll:`, error);
+      return {
+        Error: error
+      };
+    }
   }
 
   findOne(userId: string): User {
@@ -24,5 +38,4 @@ export class UsersService {
 
     return newUser;
   }
-
 }

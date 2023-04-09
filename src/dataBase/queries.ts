@@ -18,7 +18,6 @@ export const DELETE_CART_ITEM_QUERY = `DELETE FROM cart_items WHERE product_id =
 export const GET_USER_QUERY = `SELECT u.user_id, u.name, u.password, u.email
     FROM users AS u`;
 
-// export const GET_PRODUCTS_LIST_QUERY = `SELECT c.
-//     FROM carts AS c
-//     JOIN cart_items AS i
-//     ON p.id = c.product_id`;
+export const UPDATE_ORDER_STATUS_QUERY = `UPDATE orders SET status = $1 WHERE id = $2 RETURNING status`;
+
+export const DELETE_ORDER_QUERY = `DELETE FROM orders WHERE id = $1 RETURNING *`;

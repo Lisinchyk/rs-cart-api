@@ -19,11 +19,7 @@ export const createConnectionClient = async () => {
     connectionTimeoutMillis: 20000,
   };
 
-  console.log("dbOptions", dbOptions);
-
   const dbClient = new Client(dbOptions);
-
-  console.log("dbClient", dbClient);
 
   dbClient
     .connect()
