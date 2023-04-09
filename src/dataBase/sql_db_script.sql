@@ -22,6 +22,18 @@ create table if not exists users (
 	password text not null
 );
 
+CREATE TABLE IF NOT EXISTS orders (
+    id uuid default uuid_generate_v4(),
+    user_id uuid,
+    cart_id uuid,
+    payment json,
+    delivery json,
+    comments text,
+    status status_enum,
+    total integer,
+    foreign key ("cart_id") references "carts" ("id")
+);
+
 -- alter table cart_items add column cart_id uuid references carts(id);
 
 -- CREATE type status_enum AS ENUM ('OPEN', 'ORDERED');
