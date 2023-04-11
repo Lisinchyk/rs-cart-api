@@ -45,7 +45,7 @@ export class OrderService {
     try {
       const { user_id, cart_id, payment, delivery, comments, status, total, items } = data;
       const dbClient = await createConnectionClient();
-      const req = [user_id, cart_id, payment, delivery, comments, status, total, items];
+      const req = [cart_id, user_id, payment, delivery, comments, status, total, items];
 
       return await dbClient.query(CREATE_ORDER_QUERY, [...req]);
     } catch (error) {

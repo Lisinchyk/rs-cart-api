@@ -34,7 +34,7 @@ export class CartService {
 
   async updateByUserId(userId, item) {
     try {
-      const productId = item.product.product_id;
+      const productId = item.product.id;
       const dbClient = await createConnectionClient();
 
       const result = await dbClient.query(GET_CART_ITEM_BY_PRODUCT_ID_QUERY,[productId]);
