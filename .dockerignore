@@ -1,0 +1,7 @@
+/.serverless
+coverage
+/node_modules
+/.idea
+/dist
+.env
+.git
