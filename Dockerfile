@@ -1,5 +1,5 @@
 #Base
-FROM node:16-alpine AS base
+FROM node:16
 
 WORKDIR /app
 
@@ -20,8 +20,8 @@ RUN npm run build
 #RUN npm install pm2 -g
 #COPY --from=base /app/dist ./dist
 
-USER node
-ENV PORT=8080
+#USER node
+#ENV PORT=8080
 EXPOSE 8080
 
 CMD ["node", "dist/main.js"]
