@@ -5,5 +5,9 @@ import { AppRequest } from '../models';
  * @returns {string}
  */
 export function getUserIdFromRequest(request: AppRequest): string {
-  return request.user && request.user.id;
+  return request.params?.userId;
 }
+
+export const getProductIdFromRequest = (request) => {
+  return request.params?.productId;
+};
